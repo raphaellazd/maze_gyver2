@@ -3,7 +3,11 @@
 
 import map
 import hero
+import sedatif
 
+
+
+    
 if __name__ == "__main__":
     
     print("Arriverez-vous à faire s'évader McGuy ?")
@@ -14,15 +18,19 @@ if __name__ == "__main__":
     
     mcguy = hero.Hero()          # init mcguyver
     mcguy.start_pos()
+
+    piqure = sedatif.Sedatif()   #init sedatif
+    piqure.get_random_pos()
+    piqure.disperse_items()
     
-    for l in mcguy.structure:
-            print(l)
+    for l in mcguy.structure:   # premier affichage de la carte
+        print(l)  
     
     continuer = 1
 
     while continuer:
         
-        direction = input("Quel est votre mouvement ? ")
+        direction = input("Quel est votre mouvement ? Pressez une touche de direction puis Entrée.")
         
         if direction == "q":
             mcguy.move_left()
@@ -40,7 +48,8 @@ if __name__ == "__main__":
             mcguy.move_right()
             for l in mcguy.structure:
                 print(l)
-            continue
+            continues
+        
         
         if direction == "z":
             mcguy.move_above()
@@ -51,8 +60,4 @@ if __name__ == "__main__":
         else:
             #raise exception : la touche n'est pas valide
             pass
-    
-
-    
-    
     

@@ -1,8 +1,8 @@
 # coding: utf-8
 
-""" Module contenant la class Map."""
+""" Module contenant la classe Map."""
 
-from constants import CARTE
+import constants
 
 
 class Map:
@@ -11,12 +11,13 @@ class Map:
     class representant l'objet map. Elle a un attribut structure qui pointe 
     une liste vide. Celle ci sera rempli grace a la methode structurize.
     '''
+    structure = []
+    free_paths =[]
 
     def __init__(self):
-        # Mise en place d'attribut pointant des listes vides pour
-        # l'instant mais qui seront complété par la methode load_file.
-        self.structure = []
-        
+        # une liste vide permettant d'acceuillir la structure renvoyé par structurize().
+        Map.structure = []
+        Map.free_paths =[]
     
 
     def structurize(self):
@@ -25,19 +26,32 @@ class Map:
         de liste de listes au sein d'un attribut structure de la classe.
         '''
 
-        with open(CARTE, "r") as carte:
-            
-            return [self.structure.append(list(line.rstrip("\n"))) for line in carte]
+        with open(constants.CARTE, "r") as carte:
+            # On ajoute à l'attribut structure, on enlève les symboles de retour ligne.
+            return [Map.structure.append(list(line.rstrip("\n"))) for line in carte]
 
-        #for l in map_list:      # Ceci est un test. La boucle for est utilisée 
-            #print(l)            # pour afficher ligne par ligne       
+    
+    def get_free_path(self):
+        '''
+        Méthode permettant de stocker les positions de passage libre dans la map
+        '''
+        
+        for y, line in enumerate(self.structure):
+            for x, char in enumerate(line):
+                if char == constants.PATH:
+                    Map.free_paths.append((y, x))
+
+
+
 
 
 if __name__ == "__main__":
-    """ _name_ est _main_ si le module est lancé en standalone et non importé
-    dans ce cas le bloc indenté s'executera (par exemple pour un test)."""
-
-
+    import random
+    
     jeu = Map()
     jeu.structurize()
-    print(jeu.structure)
+    
+
+    jeu.get_free_path()
+    print(Map.free_paths)
+    print(random.sample(jeu.free_paths, 3))

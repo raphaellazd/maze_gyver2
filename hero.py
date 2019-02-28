@@ -11,14 +11,15 @@ import constants
 class Hero:
      
     """
-    Classe Hero, celle ci ...
+    Classe Hero, celle ci represente le heros au travers de ses coordonnées, des objets qu'il
+    transporte ou de la structure dans laquelle il evolue.
     """
 
     def __init__(self, pos_x=0, pos_y=0):   # les parametres nommés permette d'etre sur l'origine 
         
         self.pos_x = pos_x
-        self.pos_y = pos_y
-        self.structure = [['S', '#', '#', ' ', '#', '#', ' ', '#', '#', '#', '#', '#', '#', '#', '#'], [' ', '#', '#', ' ', '#', ' ', ' ', ' ', ' ', ' ', '#', '#', ' ', '#', '#'], [' ', ' ', ' ', ' ', ' ', ' ', '#', '#', '#', ' ', '#', '#', ' ', '#', '#'], ['#', '#', ' ', '#', ' ', '#', '#', '#', ' ', ' ', ' ', ' ', ' ', ' ', '#'], [' ', ' ', ' ', '#', ' ', '#', '#', '#', '#', '#', '#', ' ', '#', '#', '#'], ['#', '#', ' ', '#', '#', '#', '#', ' ', ' ', '#', '#', ' ', ' ', ' ', '#'], ['#', '#', ' ', '#', '#', '#', '#', ' ', '#', '#', '#', '#', '#', '#', '#'], ['#', '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#', '#', '#', '#', '#', '#'], ['#', '#', ' ', '#', '#', '#', '#', ' ', '#', '#', '#', ' ', ' ', ' ', '#'], ['#', ' ', ' ', ' ', '#', '#', ' ', '#', ' ', '#', '#', '#', ' ', '#', '#'], ['#', '#', '#', '#', '#', ' ', '#', ' ', ' ', ' ', ' ', ' ', '#', ' ', '#'], ['#', ' ', '#', ' ', ' ', ' ', '#', '#', '#', '#', '#', '#', '#', ' ', '#'], ['#', ' ', '#', ' ', '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'], ['#', ' ', ' ', ' ', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#'], ['#', '#', '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'F']]#map.structure
+        self.pos_y = pos_y            # Je n'arrive pas a mettre ici map.structure pour pointer vers l attribut structure de Map
+        self.structure = map.Map.structure #[['S', '#', '#', ' ', '#', '#', ' ', '#', '#', '#', '#', '#', '#', '#', '#'], [' ', '#', '#', ' ', '#', ' ', ' ', ' ', ' ', ' ', '#', '#', ' ', '#', '#'], [' ', ' ', ' ', ' ', ' ', ' ', '#', '#', '#', ' ', '#', '#', ' ', '#', '#'], ['#', '#', ' ', '#', ' ', '#', '#', '#', ' ', ' ', ' ', ' ', ' ', ' ', '#'], [' ', ' ', ' ', '#', ' ', '#', '#', '#', '#', '#', '#', ' ', '#', '#', '#'], ['#', '#', ' ', '#', '#', '#', '#', ' ', ' ', '#', '#', ' ', ' ', ' ', '#'], ['#', '#', ' ', '#', '#', '#', '#', ' ', '#', '#', '#', '#', '#', '#', '#'], ['#', '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#', '#', '#', '#', '#', '#'], ['#', '#', ' ', '#', '#', '#', '#', ' ', '#', '#', '#', ' ', ' ', ' ', '#'], ['#', ' ', ' ', ' ', '#', '#', ' ', '#', ' ', '#', '#', '#', ' ', '#', '#'], ['#', '#', '#', '#', '#', ' ', '#', ' ', ' ', ' ', ' ', ' ', '#', ' ', '#'], ['#', ' ', '#', ' ', ' ', ' ', '#', '#', '#', '#', '#', '#', '#', ' ', '#'], ['#', ' ', '#', ' ', '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'], ['#', ' ', ' ', ' ', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#'], ['#', '#', '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'F']]#map.structure
         self.items = []             # servira plus tard a collecter les objets
         
            
@@ -30,17 +31,15 @@ class Hero:
             self.structure[self.pos_y][self.pos_x] = constants.HERO
 
     def move_left(self):
-        
         """
-        NOUVELLE VERSION: On utilise plus une classe Position et on rassemble directement
-        les methodes de deplacement et d'acqusition des coordonnées dans la meme methode move_...
+        Méthode de mouvement vers la gauche.
         """
         
-        if self.pos_x > 0:                                  # n'est pas hors limites
-            if self.structure[self.pos_y][self.pos_x-1] != constants.WALL:  # n'est pas un mur
-                self.structure[self.pos_y][self.pos_x] = constants.PATH   # remplace par chemin
-                self.pos_x -= 1                             # modif. coord
-                self.structure[self.pos_y][self.pos_x] = constants.HERO   # insertion hero 
+        if self.pos_x > 0:                                                  # si n'est pas hors limites
+            if self.structure[self.pos_y][self.pos_x-1] != constants.WALL:  # si dir n'est pas un mur
+                self.structure[self.pos_y][self.pos_x] = constants.PATH     # remplace par chemin
+                self.pos_x -= 1                                             # modif. coord
+                self.structure[self.pos_y][self.pos_x] = constants.HERO     # insertion hero 
 
     
     def move_below(self):
@@ -72,8 +71,10 @@ class Hero:
 
 if __name__ == "__main__":
     mcguy = Hero()
-    mcguy.start_pos()
-    print(mcguy.pos_x)
+    print(mcguy.structure)
+    #mcguy.start_pos()
+    
+    """print(mcguy.pos_x)
     print(mcguy.pos_y)
     for l in mcguy.structure:
         print(l)
@@ -91,19 +92,13 @@ if __name__ == "__main__":
         print(l)
     
     mcguy.move_left()
-    print(mcguy.pos_x)
-    print(mcguy.pos_y)
     for l in mcguy.structure:
         print(l)
 
     mcguy.move_right()
-    print(mcguy.pos_x)
-    print(mcguy.pos_y)
     for l in mcguy.structure:
         print(l)
 
     mcguy.move_above()
-    print(mcguy.pos_x)
-    print(mcguy.pos_y)
     for l in mcguy.structure:
-        print(l)
+        print(l)"""
