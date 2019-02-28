@@ -11,13 +11,13 @@ class Map:
     class representant l'objet map. Elle a un attribut structure qui pointe 
     une liste vide. Celle ci sera rempli grace a la methode structurize.
     '''
-    structure = []
-    free_paths =[]
+    #structure = []
+    #free_paths =[]   # attributs de classe qui ne doivent pas être utiliser ici
 
     def __init__(self):
         # une liste vide permettant d'acceuillir la structure renvoyé par structurize().
-        Map.structure = []
-        Map.free_paths =[]
+        self.structure = []
+        self.free_paths =[]
     
 
     def structurize(self):
@@ -28,7 +28,7 @@ class Map:
 
         with open(constants.CARTE, "r") as carte:
             # On ajoute à l'attribut structure, on enlève les symboles de retour ligne.
-            return [Map.structure.append(list(line.rstrip("\n"))) for line in carte]
+            return [self.structure.append(list(line.rstrip("\n"))) for line in carte]
 
     
     def get_free_path(self):
@@ -39,7 +39,7 @@ class Map:
         for y, line in enumerate(self.structure):
             for x, char in enumerate(line):
                 if char == constants.PATH:
-                    Map.free_paths.append((y, x))
+                    self.free_paths.append((y, x))
 
 
 
@@ -53,5 +53,5 @@ if __name__ == "__main__":
     
 
     jeu.get_free_path()
-    print(Map.free_paths)
+    print(jeu.free_paths)
     print(random.sample(jeu.free_paths, 3))

@@ -15,11 +15,12 @@ if __name__ == "__main__":
     
     jeu = map.Map()         # init carte
     jeu.structurize()
+    jeu.get_free_path()
     
-    mcguy = hero.Hero()          # init mcguyver
+    mcguy = hero.Hero(jeu)          # init mcguyvers
     mcguy.start_pos()
 
-    piqure = sedatif.Sedatif()   #init sedatif
+    piqure = sedatif.Sedatif(jeu)   #init sedatif
     piqure.get_random_pos()
     piqure.disperse_items()
     
@@ -48,7 +49,7 @@ if __name__ == "__main__":
             mcguy.move_right()
             for l in mcguy.structure:
                 print(l)
-            continues
+            continue
         
         
         if direction == "z":
