@@ -11,19 +11,19 @@ class Map:
     class representant l'objet map. Elle a un attribut structure qui pointe 
     une liste vide. Celle ci sera rempli grace a la methode structurize.
     '''
-    #structure = []
-    #free_paths =[]   # attributs de classe qui ne doivent pas être utiliser ici
+    
 
     def __init__(self):
         # une liste vide permettant d'acceuillir la structure renvoyé par structurize().
         self.structure = []
-        self.free_paths =[]
-    
+        self.free_paths = []
+        self.end_pos = [] 
+
 
     def structurize(self):
         '''
         Méthode permettant de charger la structure d'un fichier .txt sous forme
-        de liste de listes au sein d'un attribut structure de la classe.
+        de liste de listes au sein d'un attribut structure.
         '''
 
         with open(constants.CARTE, "r") as carte:
@@ -40,6 +40,15 @@ class Map:
             for x, char in enumerate(line):
                 if char == constants.PATH:
                     self.free_paths.append((y, x))
+
+
+    def get_end_pos(self):
+
+        for y, line in enumerate(self.structure):
+            for x, char in enumerate(line):
+                if char == constants.FINISH:
+                    self.end_pos.append((y, x))
+
 
 
 
