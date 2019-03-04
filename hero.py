@@ -55,7 +55,7 @@ class Hero:
     def win_or_lose(self):
         
         #if len(self.items) == 3 :
-        if self.item_counter != 0 :
+        if self.item_counter == 3 :
             return True
         else :
             return False
