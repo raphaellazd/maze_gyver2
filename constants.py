@@ -21,6 +21,9 @@ FINISH_IMG = "images/path.png"
 WALL_IMG = "images/wall.png"
 HERO_IMG = "images/mcgyver.png"
 JAILER_IMG = "images/jailer.png"
+TUBE_IMG = "images/tube.png"
+ETHER_IMG = "images/ether.png"
+STING_IMG = "images/sting.png"
 
 SPRITE_NB = 15
 SPRITE_SZ = 32

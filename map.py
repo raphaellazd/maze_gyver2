@@ -60,6 +60,7 @@ class Map:
                     screen.blit(self.jailer_spr, (pix_x, pix_y))
                 if char == constants.FINISH :
                     screen.blit(self.finish_spr, (pix_x, pix_y))
+                    
     
     def get_free_path(self):
         '''
