@@ -1,9 +1,9 @@
 # coding: utf-8
 '''
 Fichier contenant les variables constantes de Maze Gyver
-''' 
+'''
 
-CARTE = "/Users/karene/Desktop/labeur/PY/maze_gyver2/carte.txt"
+CARTE = "carte.txt"
 WALL = "#"
 PATH = " "
 START = "S"
@@ -24,6 +24,9 @@ JAILER_IMG = "images/jailer.png"
 TUBE_IMG = "images/tube.png"
 ETHER_IMG = "images/ether.png"
 STING_IMG = "images/sting.png"
+PERDU_IMG = "images/perdu.png"
+GAGNE_IMG = "images/gagné.png"
+WELCOME_IMG = "images/welcome.png"
 
 SPRITE_NB = 15
 SPRITE_SZ = 32

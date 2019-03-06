@@ -1,6 +1,7 @@
 # coding: utf-8
 
 import pygame
+from pygame import locals
 import map
 import hero
 import sedatif
@@ -17,8 +18,9 @@ def main():
     pygame.mixer.music.load("theme.mp3")
     pygame.mixer.music.play(-1)
 
-    gagne = pygame.image.load(constants.GAGNE_IMG).convert()
-    perdu = pygame.image.load(constants.PERDU_IMG).convert()
+    welcome_img = pygame.image.load(constants.WELCOME_IMG).convert()
+    gagne_img = pygame.image.load(constants.GAGNE_IMG).convert()
+    perdu_img = pygame.image.load(constants.PERDU_IMG).convert()
 
     jeu = map.Map()
     jeu.structurize()
@@ -33,8 +35,21 @@ def main():
     piqure.get_random_pos()
     piqure.disperse_items()
 
-    continuer = 1
+    welcome = 1
+    continuer = 0
     game_over = 0
+
+    while welcome:
+
+        screen.blit(welcome_img, (0, 0))
+        for event in pygame.event.get():
+            if event.type == locals.QUIT:
+                pygame.quit()
+            if event.type == locals.KEYDOWN:
+                if event.key == locals.K_RETURN:
+                    welcome, continuer = 0, 1
+
+        pygame.display.flip()
 
     while continuer:
 
@@ -60,10 +75,10 @@ def main():
     while game_over:
 
         if mcguy.win_or_lose():
-            screen.blit(gagne, (96, 96))
+            screen.blit(gagne_img, (96, 96))
 
         else:
-            screen.blit(perdu, (96, 96))
+            screen.blit(perdu_img, (96, 96))
 
         for event in pygame.event.get():
             if event.type == locals.QUIT:
