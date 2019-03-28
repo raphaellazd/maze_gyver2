@@ -19,24 +19,24 @@ def main():
     pygame.mixer.music.play(-1)
 
     welcome_img = pygame.image.load(constants.WELCOME_IMG).convert()
-    gagne_img = pygame.image.load(constants.GAGNE_IMG).convert()
-    perdu_img = pygame.image.load(constants.PERDU_IMG).convert()
+    win_img = pygame.image.load(constants.WIN_IMG).convert()
+    loose_img = pygame.image.load(constants.LOOSE_IMG).convert()
 
-    jeu = map.Map()
-    jeu.structurize()
-    jeu.get_free_path()
-    jeu.get_end_pos()
+    game = map.Map()
+    game.structurize()
+    game.get_free_path()
+    game.get_end_pos()
 
-    piqure = sedatif.Sedatif(jeu)
+    injection = sedatif.Sedatif(jeu)
 
-    mcguy = hero.Hero(jeu, piqure)
+    mcguy = hero.Hero(jeu, injection)
     mcguy.start_pos()
 
-    piqure.get_random_pos()
-    piqure.disperse_items()
+    injection.get_random_pos()
+    injection.disperse_items()
 
     welcome = 1
-    continuer = 0
+    loop = 0
     game_over = 0
 
     while welcome:
@@ -47,11 +47,11 @@ def main():
                 pygame.quit()
             if event.type == locals.KEYDOWN:
                 if event.key == locals.K_RETURN:
-                    welcome, continuer = 0, 1
+                    welcome, loop = 0, 1
 
         pygame.display.flip()
 
-    while continuer:
+    while loop:
 
         for event in pygame.event.get():
             if event.type == locals.QUIT:
@@ -64,7 +64,7 @@ def main():
                 if event.key == locals.K_RIGHT:
                     mcguy.move_right()
                     if mcguy.check_front_jailer(jeu):
-                        continuer, game_over = 0, 1
+                        loop, game_over = 0, 1
 
                 if event.key == locals.K_UP:
                     mcguy.move_above()
@@ -75,10 +75,10 @@ def main():
     while game_over:
 
         if mcguy.win_or_lose():
-            screen.blit(gagne_img, (96, 96))
+            screen.blit(win_img, (96, 96))
 
         else:
-            screen.blit(perdu_img, (96, 96))
+            screen.blit(loose_img, (96, 96))
 
         for event in pygame.event.get():
             if event.type == locals.QUIT:

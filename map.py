@@ -37,9 +37,9 @@ class Map:
          list of lists form, within a structure attribute.
         '''
 
-        with open(constants.CARTE, "r") as carte:
+        with open(constants.MAP, "r") as map:
             return [self.structure.append(list(line.rstrip("\n")))
-                    for line in carte]
+                    for line in map]
 
     def display_maze(self, screen):
         '''

@@ -16,7 +16,6 @@ class Hero:
 
     def __init__(self, map, sedatif, pos_x=0, pos_y=0):
 
-        # self.map = map
         self.structure = map.structure
         self.end_pos = map.end_pos
         self.sedatif = sedatif
@@ -25,7 +24,7 @@ class Hero:
         self.pos_x = pos_x
         self.pos_y = pos_y
 
-        self.items = []             # servira plus tard a collecter les objets
+        self.items = []             
         self.item_counter = 0
 
     def start_pos(self):

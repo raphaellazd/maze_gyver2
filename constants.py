@@ -1,9 +1,9 @@
 # coding: utf-8
 '''
-Fichier contenant les variables constantes de Maze Gyver
+Module containing the constants varaiables.
 '''
 
-CARTE = "carte.txt"
+MAP = "map.txt"
 WALL = "#"
 PATH = " "
 START = "S"
@@ -24,8 +24,8 @@ JAILER_IMG = "images/jailer.png"
 TUBE_IMG = "images/tube.png"
 ETHER_IMG = "images/ether.png"
 STING_IMG = "images/sting.png"
-PERDU_IMG = "images/perdu.png"
-GAGNE_IMG = "images/gagné.png"
+LOOSE_IMG = "images/loose.png"
+WIN_IMG = "images/win.png"
 WELCOME_IMG = "images/welcome.png"
 
 SPRITE_NB = 15

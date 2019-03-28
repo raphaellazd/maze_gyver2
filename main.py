@@ -9,26 +9,26 @@ if __name__ == "__main__":
 
     print("Arriverez-vous à faire s'évader McGuy ?")
 
-    jeu = map.Map()
-    jeu.structurize()
-    jeu.get_free_path()
-    jeu.get_end_pos()
+    game = map.Map()
+    game.structurize()
+    game.get_free_path()
+    game.get_end_pos()
 
-    piqure = sedatif.Sedatif(jeu)
+    injection = sedatif.Sedatif(jeu)
 
-    mcguy = hero.Hero(jeu, piqure)
+    mcguy = hero.Hero(jeu, injection)
     mcguy.start_pos()
 
-    piqure.get_random_pos()
-    piqure.disperse_items()
+    injection.get_random_pos()
+    injection.disperse_items()
 
     for l in mcguy.structure:
         print(l)
 
-    continuer = 1
+    loop = 1
     game_over = 0
 
-    while continuer:
+    while loop:
 
         direction = input("Quel est votre mouvement ? Pressez une touche \
                             de direction puis Entrée.")
@@ -38,7 +38,7 @@ if __name__ == "__main__":
             mcguy.move_left()
             mcguy.check_front_jailer(jeu)
             if mcguy.check_front_jailer(jeu):
-                continuer, game_over = 0, 1
+                loop, game_over = 0, 1
             else:
                 for l in mcguy.structure:
                     print(l)
@@ -48,7 +48,7 @@ if __name__ == "__main__":
             mcguy.move_below()
             mcguy.check_front_jailer(jeu)
             if mcguy.check_front_jailer(jeu):
-                continuer, game_over = 0, 1
+                loop, game_over = 0, 1
             else:
                 for l in mcguy.structure:
                     print(l)
@@ -58,7 +58,7 @@ if __name__ == "__main__":
             mcguy.move_right()
             mcguy.check_front_jailer(jeu)
             if mcguy.check_front_jailer(jeu):
-                continuer, game_over = 0, 1
+                loop, game_over = 0, 1
             else:
                 for l in mcguy.structure:
                     print(l)
@@ -68,7 +68,7 @@ if __name__ == "__main__":
             mcguy.move_above()
             mcguy.check_front_jailer(jeu)
             if mcguy.check_front_jailer(jeu):
-                continuer, game_over = 0, 1
+                loop, game_over = 0, 1
             else:
                 for l in mcguy.structure:
                     print(l)

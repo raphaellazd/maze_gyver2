@@ -9,7 +9,7 @@ class Sedatif():
 
     def __init__(self, map):
 
-        self.map = map  # certainement inutile (ou pas!)
+        self.map = map
         self.structure = map.structure
         self.free_paths = map.free_paths
         self.random_pos = []
@@ -29,14 +29,14 @@ class Sedatif():
 
 
 def main():
-    piqure = Sedatif(map)
-    print(piqure.free_paths)
-    piqure.get_random_pos()
-    print(piqure.random_pos)
-    piqure.disperse_items()
-    print(piqure.random_pos[1][0])
-    print(piqure.random_pos[1][1])
-    for l in piqure.structure:
+    injection = Sedatif(map)
+    print(injection.free_paths)
+    injection.get_random_pos()
+    print(injection.random_pos)
+    injection.disperse_items()
+    print(injection.random_pos[1][0])
+    print(injection.random_pos[1][1])
+    for l in injection.structure:
         print(l)
 
 
