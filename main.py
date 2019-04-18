@@ -14,9 +14,9 @@ if __name__ == "__main__":
     game.get_free_path()
     game.get_end_pos()
 
-    injection = sedatif.Sedatif(jeu)
+    injection = sedatif.Sedatif(game)
 
-    mcguy = hero.Hero(jeu, injection)
+    mcguy = hero.Hero(game, injection)
     mcguy.start_pos()
 
     injection.get_random_pos()
@@ -36,8 +36,8 @@ if __name__ == "__main__":
         if direction == "q":
 
             mcguy.move_left()
-            mcguy.check_front_jailer(jeu)
-            if mcguy.check_front_jailer(jeu):
+            mcguy.check_front_jailer(game)
+            if mcguy.check_front_jailer(game):
                 loop, game_over = 0, 1
             else:
                 for l in mcguy.structure:
@@ -46,8 +46,8 @@ if __name__ == "__main__":
 
         if direction == "s":
             mcguy.move_below()
-            mcguy.check_front_jailer(jeu)
-            if mcguy.check_front_jailer(jeu):
+            mcguy.check_front_jailer(game)
+            if mcguy.check_front_jailer(game):
                 loop, game_over = 0, 1
             else:
                 for l in mcguy.structure:
@@ -56,8 +56,8 @@ if __name__ == "__main__":
 
         if direction == "d":
             mcguy.move_right()
-            mcguy.check_front_jailer(jeu)
-            if mcguy.check_front_jailer(jeu):
+            mcguy.check_front_jailer(game)
+            if mcguy.check_front_jailer(game):
                 loop, game_over = 0, 1
             else:
                 for l in mcguy.structure:
@@ -66,8 +66,8 @@ if __name__ == "__main__":
 
         if direction == "z":
             mcguy.move_above()
-            mcguy.check_front_jailer(jeu)
-            if mcguy.check_front_jailer(jeu):
+            mcguy.check_front_jailer(game)
+            if mcguy.check_front_jailer(game):
                 loop, game_over = 0, 1
             else:
                 for l in mcguy.structure:

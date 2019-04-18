@@ -27,9 +27,9 @@ def main():
     game.get_free_path()
     game.get_end_pos()
 
-    injection = sedatif.Sedatif(jeu)
+    injection = sedatif.Sedatif(game)
 
-    mcguy = hero.Hero(jeu, injection)
+    mcguy = hero.Hero(game, injection)
     mcguy.start_pos()
 
     injection.get_random_pos()
@@ -63,13 +63,13 @@ def main():
                     mcguy.move_below()
                 if event.key == locals.K_RIGHT:
                     mcguy.move_right()
-                    if mcguy.check_front_jailer(jeu):
+                    if mcguy.check_front_jailer(game):
                         loop, game_over = 0, 1
 
                 if event.key == locals.K_UP:
                     mcguy.move_above()
 
-        jeu.display_maze(screen)
+        game.display_maze(screen)
         pygame.display.flip()
 
     while game_over:

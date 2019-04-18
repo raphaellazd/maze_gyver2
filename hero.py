@@ -24,7 +24,7 @@ class Hero:
         self.pos_x = pos_x
         self.pos_y = pos_y
 
-        self.items = []             
+        self.items = []
         self.item_counter = 0
 
     def start_pos(self):
